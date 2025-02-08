@@ -1,9 +1,9 @@
 package com.redis.domain.ports.interfaces;
 
-import com.redis.entity.User;
+import com.redis.domain.UserDTO;
 
 public interface UserServicePort {
 	
-	public void createUser(User user);
+	public void createUser(UserDTO userDTO);
 
 }

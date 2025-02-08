@@ -6,13 +6,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("User")
-public class User  implements Serializable {
+public class UserEntity  implements Serializable {
 
 	@Id
 	private String id;
     private String name;
     
-	public User(String id, String name) {
+	public UserEntity(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
