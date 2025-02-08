@@ -29,7 +29,7 @@ public class SpringRedisApplication implements CommandLineRunner{
 	@Override
 	  public void run(String... args) throws Exception {
 		
-		User user = new User("234", "user01");
+		User user = new User("345", "user02");
 		userRepository.save(user);
 		
 		List<User> userList = new ArrayList<>();
