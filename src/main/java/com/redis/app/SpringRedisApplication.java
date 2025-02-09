@@ -3,7 +3,7 @@ package com.redis.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.redis.entity.UserEntity;
+import com.redis.infra.adapters.entity.UserEntity;
 import com.redis.infra.adapters.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 @SpringBootApplication(exclude =  {DataSourceAutoConfiguration.class })
-@ComponentScan(basePackages = "com.redis.configuration,com.redis.repository")
-@EnableRedisRepositories(basePackages = "com.redis.repository")
+@ComponentScan(basePackages = "com.redis.configuration,com.redis.infra.adapters.repository")
+@EnableRedisRepositories(basePackages = "com.redis.infra.adapters.repository")
 public class SpringRedisApplication implements CommandLineRunner{
 
 	@Autowired

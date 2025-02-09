@@ -1,6 +1,8 @@
 package com.redis.domain.adapter.service;
 
+import com.redis.domain.User;
 import com.redis.domain.UserDTO;
+import com.redis.domain.ports.repository.UserRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,13 @@ import com.redis.infra.adapters.repository.IUserRepository;
 public class UserService implements UserServicePort{
 	
 	@Autowired
-	private IUserRepository userRepository;
+	private UserRepositoryPort userRepositoryPort;
 
 	@Override
 	public void createUser(UserDTO userDTO) {
-		userRepository.save(user);
+		User user = new User(userDTO.getId(), userDTO.getName());
+		userRepositoryPort.saveUser(user);
 	}
+
 
 }

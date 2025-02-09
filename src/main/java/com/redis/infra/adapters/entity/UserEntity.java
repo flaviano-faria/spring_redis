@@ -1,7 +1,8 @@
-package com.redis.entity;
+package com.redis.infra.adapters.entity;
 
 import java.io.Serializable;
 
+import com.redis.domain.User;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -16,5 +17,9 @@ public class UserEntity  implements Serializable {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+
+	public User toUser(){
+		return new User(this.id, this.name);
 	}
 }

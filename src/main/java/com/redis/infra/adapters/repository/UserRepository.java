@@ -1,10 +1,13 @@
 package com.redis.infra.adapters.repository;
 
+import com.redis.domain.User;
 import com.redis.domain.UserDTO;
 import com.redis.domain.ports.repository.UserRepositoryPort;
+import com.redis.infra.adapters.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class UserRepository implements UserRepositoryPort {
@@ -16,12 +19,16 @@ public class UserRepository implements UserRepositoryPort {
     }
 
     @Override
-    public List<UserDTO> findAllUsers() {
-        return List.of();
+    public List<User> findAllUsers() {
+        List<UserEntity> listUserEntity = (List<UserEntity>) this.iUserRepository.findAll();
+
+        return listUserEntity.stream().map(UserEntity::toUser).collect(Collectors.toList());
     }
 
     @Override
-    public void saveUser(UserDTO userDTO) {
-
+    public void saveUser(User user) {
+        UserEntity userEntity = new UserEntity(user.getId(), user.getName());
+        this.iUserRepository.save(userEntity);
     }
+
 }
