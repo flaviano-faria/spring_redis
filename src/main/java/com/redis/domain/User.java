@@ -30,4 +30,9 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public UserDTO toUserDTO(){
+
+        return new UserDTO(this.id, this.name);
+    }
 }

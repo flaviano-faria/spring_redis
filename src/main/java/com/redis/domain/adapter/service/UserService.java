@@ -5,6 +5,10 @@ import com.redis.domain.UserDTO;
 import com.redis.domain.ports.repository.UserRepositoryPort;
 
 import com.redis.domain.ports.interfaces.UserServicePort;
+import com.redis.infra.adapters.entity.UserEntity;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserService implements UserServicePort{
 	
@@ -21,5 +25,10 @@ public class UserService implements UserServicePort{
 		userRepositoryPort.saveUser(user);
 	}
 
+	@Override
+	public List<UserDTO> getAllUsers() {
+		List<User> listUser = userRepositoryPort.findAllUsers();
+		return  listUser.stream().map(User::toUserDTO).collect(Collectors.toList());
+	}
 
 }
