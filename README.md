@@ -6,6 +6,7 @@ Hexagonal architecture diagram:
 
 Class diagram:
 
-![spring_redis_class_diagram drawio (1)](https://github.com/user-attachments/assets/51e76924-034d-432d-aa48-02c593988d49)
+![spring_redis_class_diagram drawio (2)](https://github.com/user-attachments/assets/efadec35-10ba-4568-9f9b-fdfca3c1794c)
+
 
 
