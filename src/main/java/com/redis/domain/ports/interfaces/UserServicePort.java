@@ -9,4 +9,5 @@ public interface UserServicePort {
 	
 	public void createUser(UserDTO userDTO);
 	public List<UserDTO> getAllUsers();
+	public UserDTO findUserById(String id);
 }

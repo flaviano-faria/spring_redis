@@ -1,10 +1,7 @@
 package com.redis.controller;
 
 import com.redis.domain.ports.interfaces.UserServicePort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.redis.domain.UserDTO;
 
 import java.util.List;
@@ -27,6 +24,11 @@ public class UserController {
     @GetMapping
     public List<UserDTO> getAllUsers() {
         return this.userServicePort.getAllUsers();
+    }
+
+    @GetMapping(path = "/findbyid/{id}")
+    public UserDTO getUserById(@PathVariable String id) {
+        return this.userServicePort.findUserById(id);
     }
 	
 }

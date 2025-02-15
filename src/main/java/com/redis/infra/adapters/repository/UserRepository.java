@@ -1,12 +1,11 @@
 package com.redis.infra.adapters.repository;
 
 import com.redis.domain.User;
-import com.redis.domain.UserDTO;
 import com.redis.domain.ports.repository.UserRepositoryPort;
 import com.redis.infra.adapters.entity.UserEntity;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -31,4 +30,10 @@ public class UserRepository implements UserRepositoryPort {
         this.iUserRepository.save(userEntity);
     }
 
+    @Override
+    public User findById(String id) {
+        UserEntity userEntity = this.iUserRepository.findById(id).orElse(new UserEntity("",""));
+
+        return (User) userEntity.toUser();
+    }
 }
