@@ -1,6 +1,9 @@
 package com.redis.controller;
 
 import com.redis.domain.ports.interfaces.UserServicePort;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.redis.domain.UserDTO;
 
@@ -16,9 +19,11 @@ public class UserController {
     }
 
     @PostMapping
-	public void createUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO) {
 
 		this.userServicePort.createUser(userDTO);
+
+        return new ResponseEntity<>("User registered Successfully!", HttpStatus.OK);
 	}
 
     @GetMapping

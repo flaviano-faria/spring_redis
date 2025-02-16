@@ -1,8 +1,13 @@
 package com.redis.domain;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class UserDTO {
-	
+
+    @NotEmpty(message = "id is required")
 	private String id;
+
+    @NotEmpty(message = "name is required")
     private String name;
     
 	public UserDTO(String id, String name) {
