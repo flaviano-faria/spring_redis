@@ -7,45 +7,45 @@ import org.springframework.http.HttpStatus;
 
 public class ApiError {
 
-    private HttpStatus status;
-    private String message;
-    private List<String> errors;
+    private HttpStatus apiStatus;
+    private String apiMessage;
+    private List<String> apiErrors;
 
     public ApiError(HttpStatus status, String message, List<String> errors) {
         super();
-        this.status = status;
-        this.message = message;
-        this.errors = errors;
+        this.apiStatus = status;
+        this.apiMessage = message;
+        this.apiErrors = errors;
     }
 
     public ApiError(HttpStatus status, String message, String error) {
         super();
-        this.status = status;
-        this.message = message;
-        errors = Arrays.asList(error);
+        this.apiStatus = status;
+        this.apiMessage = message;
+        apiErrors = Arrays.asList(error);
     }
 
-	public HttpStatus getStatus() {
-		return status;
+	public HttpStatus getApiStatus() {
+		return apiStatus;
 	}
 
-	public void setStatus(HttpStatus status) {
-		this.status = status;
+	public void setApiStatus(HttpStatus status) {
+		this.apiStatus = status;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getApiMessage() {
+		return apiMessage;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setApiMessage(String message) {
+		this.apiMessage = message;
 	}
 
-	public List<String> getErrors() {
-		return errors;
+	public List<String> getApiErrors() {
+		return apiErrors;
 	}
 
-	public void setErrors(List<String> errors) {
-		this.errors = errors;
+	public void setApiErrors(List<String> errors) {
+		this.apiErrors = errors;
 	}
 }
