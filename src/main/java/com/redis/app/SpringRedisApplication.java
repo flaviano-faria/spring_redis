@@ -10,7 +10,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 @SpringBootApplication(exclude =  {DataSourceAutoConfiguration.class })
 @ComponentScan(basePackages = "com.redis.infra.configuration,com.redis.infra.adapters.repository," +
-		"com.redis.controller")
+		"com.redis.controller,com.redis.exception")
 @EnableRedisRepositories(basePackages = "com.redis.infra.adapters.repository")
 public class SpringRedisApplication {
 
