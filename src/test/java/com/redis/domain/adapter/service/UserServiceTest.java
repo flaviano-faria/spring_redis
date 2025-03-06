@@ -62,7 +62,6 @@ public class UserServiceTest {
 
     @Before
     public void setup() throws Exception {
-
         JPAIUserRepository = Mockito.mock(IUserRepository.class);
         userRepositoryPort = new UserRepository(JPAIUserRepository);
         userServicePort = new UserService(userRepositoryPort);
@@ -72,11 +71,10 @@ public class UserServiceTest {
     @Test
     public void MyTestController() throws Exception {
 
-        mvc.perform(MockMvcRequestBuilders.get("").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("")
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-
-
 
     @Test
     public void createUserNameNullTest() throws Exception {
@@ -88,8 +86,8 @@ public class UserServiceTest {
 
 
         mvc.perform(MockMvcRequestBuilders.post("")
-                        .contentType(MediaType.APPLICATION_JSON).
-                        content(requestJson))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson))
                 .andExpect(status().is(400));
 
     }
@@ -104,10 +102,9 @@ public class UserServiceTest {
 
 
         mvc.perform(MockMvcRequestBuilders.post("")
-                        .contentType(MediaType.APPLICATION_JSON).
-                        content(requestJson))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson))
                 .andExpect(status().is(400));
-
     }
 
 
@@ -121,8 +118,10 @@ public class UserServiceTest {
 
     Mockito.when(JPAIUserRepository.findAll()).thenReturn(listUserEntity);
 
-        mvc.perform(MockMvcRequestBuilders.get("").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        mvc.perform(MockMvcRequestBuilders.get("")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andReturn()
+                .getResponse().getContentAsString();
     }
 }
 
