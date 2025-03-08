@@ -37,6 +37,7 @@ import org.testcontainers.utility.DockerImageName;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -120,6 +121,30 @@ public class UserServiceTest {
 
         mvc.perform(MockMvcRequestBuilders.get("")
                 .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andReturn()
+                .getResponse().getContentAsString();
+    }
+
+    @Test
+    public void findByIdSuccessTest() throws Exception {
+        UserEntity userEntity = new UserEntity("1234","test");
+        Mockito.when(JPAIUserRepository.findById("User:1234")).thenReturn(Optional.of(userEntity));
+
+        String content = mvc.perform(MockMvcRequestBuilders.get("/findbyid/User:1234")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andReturn()
+                .getResponse().getContentAsString();
+
+        System.out.println(content);
+    }
+
+    @Test
+    public void findByIdInvalidIdTest() throws Exception {
+        UserEntity userEntity = new UserEntity("2345","test2");
+        Mockito.when(JPAIUserRepository.findById("User:1234")).thenReturn(Optional.of(new UserEntity("", "")));
+
+        String content = mvc.perform(MockMvcRequestBuilders.get("/findbyid/User:1234")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn()
                 .getResponse().getContentAsString();
     }
