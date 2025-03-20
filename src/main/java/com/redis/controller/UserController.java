@@ -28,7 +28,7 @@ public class UserController {
 		}
 		
 
-        return new ResponseEntity<>("User registered Successfully!", HttpStatus.OK);
+        return new ResponseEntity<>("", HttpStatus.CREATED);
 	}
 
     @GetMapping
