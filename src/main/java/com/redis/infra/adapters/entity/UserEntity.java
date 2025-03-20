@@ -20,9 +20,8 @@ public class UserEntity  implements Serializable {
 		this.name = name;
 	}
 
-	public User toUser(){
-
-		return new User(this.id, this.name);
+	public User toUser() {
+		return User.builder().id(this.id).name(this.name).build();
 	}
 
 

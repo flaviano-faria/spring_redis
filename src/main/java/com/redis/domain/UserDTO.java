@@ -1,7 +1,13 @@
 package com.redis.domain;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Builder
+@Setter
+@Getter
 public class UserDTO {
 
     @NotEmpty(message = "id is required")
