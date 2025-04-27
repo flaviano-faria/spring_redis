@@ -4,16 +4,14 @@ import com.redis.domain.User;
 import com.redis.domain.UserDTO;
 import com.redis.domain.ports.repository.UserRepositoryPort;
 import com.redis.domain.ports.interfaces.UserServicePort;
-import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-public class UserService implements UserServicePort{
+public class UserService implements UserServicePort {
 	
 	private final UserRepositoryPort userRepositoryPort;
 
-	public UserService(UserRepositoryPort userRepositoryPort){
+	public UserService(UserRepositoryPort userRepositoryPort) {
 		this.userRepositoryPort = userRepositoryPort;
 	}
 
@@ -29,7 +27,7 @@ public class UserService implements UserServicePort{
 	@Override
 	public List<UserDTO> getAllUsers() {
 		List<User> listUser = userRepositoryPort.findAllUsers();
-		return  listUser.stream().map(user -> new UserDTO(user.getId(), user.getName())).collect(Collectors.toList());
+		return listUser.stream().map(user -> new UserDTO(user.getId(), user.getName())).collect(Collectors.toList());
 	}
 
 	@Override

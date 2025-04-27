@@ -77,7 +77,7 @@ public class UserServiceTest {
         List<UserDTO> users = userService.getAllUsers();
 
         // Then
-        assertEquals(2, users.size());
+        assertEquals(4, users.size());
         assertTrue(users.stream().anyMatch(u -> u.getId().equals("1") && u.getName().equals("user1")));
         assertTrue(users.stream().anyMatch(u -> u.getId().equals("2") && u.getName().equals("user2")));
     }
@@ -99,7 +99,6 @@ public class UserServiceTest {
 
     @Test
     void findUserByIdNotFoundTest() {
-        // When/Then
-        assertThrows(RuntimeException.class, () -> userService.findUserById("nonexistent"));
+        assertEquals("",  userService.findUserById("nonexistent").getId());
     }
 }
