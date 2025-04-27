@@ -40,4 +40,9 @@ public class UserRepository implements UserRepositoryPort {
 
         return (User) userEntity.toUser();
     }
+
+    @Override
+    public void deleteUserById(String id) {
+        this.iUserRepository.deleteById(id);
+    }
 }

@@ -37,4 +37,9 @@ public class UserService implements UserServicePort{
 		User user = userRepositoryPort.findById(id);
 		return UserDTO.builder().id(user.getId()).name(user.getName()).build();
 	}
+
+	@Override
+	public void deleteUserById(String id) {
+		userRepositoryPort.deleteUserById(id);
+	}
 }

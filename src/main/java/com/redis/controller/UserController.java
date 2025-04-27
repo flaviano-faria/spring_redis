@@ -40,5 +40,9 @@ public class UserController {
     public UserDTO getUserById(@PathVariable String id) {
         return this.userServicePort.findUserById(id);
     }
-	
+
+    @DeleteMapping(path = "/delete/{id}")
+    public void deleteUser(@PathVariable String id) {
+        this.userServicePort.deleteUserById(id);
+    }
 }

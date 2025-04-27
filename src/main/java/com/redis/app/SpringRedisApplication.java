@@ -6,12 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 @SpringBootApplication(exclude =  {DataSourceAutoConfiguration.class })
 @ComponentScan(basePackages = "com.redis.infra.configuration,com.redis.infra.adapters.repository," +
 		"com.redis.controller,com.redis.exception")
-@EnableRedisRepositories(basePackages = "com.redis.infra.adapters.repository")
 public class SpringRedisApplication {
 
 	@Autowired

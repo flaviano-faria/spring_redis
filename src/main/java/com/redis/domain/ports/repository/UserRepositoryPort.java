@@ -8,4 +8,5 @@ public interface UserRepositoryPort {
     public List<User> findAllUsers();
     public void saveUser(User user);
     public User findById(String id);
+    public void deleteUserById(String id);
 }
